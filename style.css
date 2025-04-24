@@ -1,0 +1,293 @@
+/* General Styles */
+:root {
+    --primary-color: #007bff; /* Azul vibrante para elementos clave */
+    --primary-hover-color: #0056b3; /* Azul más oscuro para hover */
+    --primary-active-color: #004085; /* Azul aún más oscuro para active */
+    --accent-color: #28a745; /* Verde para éxito/estados positivos */
+    --accent-hover-color: #218838; /* Verde más oscuro */
+    --background-color: #f8f9fa; /* Gris claro para el fondo */
+    --surface-color: #ffffff; /* Blanco para las tarjetas o contenedores */
+    --text-color: #343a40; /* Gris oscuro para texto principal */
+    --text-color-secondary: #6c757d; /* Gris medio para texto secundario */
+    --border-color: #dee2e6; /* Gris claro para bordes */
+    --divider-color: #e9ecef; /* Gris muy claro para divisores */
+    --input-border-color: #ced4da; /* Gris para bordes de input */
+    --input-focus-border: #80bdff; /* Azul claro para focus de input */
+    --input-focus-shadow: rgba(0, 123, 255, 0.25); /* Sombra para focus de input */
+    --toggle-bg-off: #adb5bd; /* Gris para toggle off */
+    --toggle-bg-on: var(--accent-color); /* Verde para toggle on */
+    --toggle-knob: #fff; /* Blanco para el interruptor del toggle */
+    --border-radius: 6px; /* Radio más suave para bordes redondeados */
+    --spacing-unit: 8px; /* Unidad de espaciado base */
+    --shadow-light: 0 1px 3px rgba(0,0,0,0.1); /* Sombra sutil */
+    --shadow-medium: 0 4px 8px rgba(0,0,0,0.1); /* Sombra un poco más pronunciada */
+    --shadow-heavy: 0 6px 12px rgba(0,0,0,0.15); /* Sombra más fuerte */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; /* Fuente moderna */
+    width: 320px; /* Ancho ligeramente aumentado */
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+    max-height: 600px; /* Altura máxima para el popup antes de scroll */
+}
+
+/* Estilo de scrollbar (Webkit) */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color-secondary);
+}
+
+
+.container {
+    padding: calc(var(--spacing-unit) * 3); /* Más padding general */
+    background-color: var(--surface-color); /* Fondo blanco para el contenido */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium); /* Sombra suave en el contenedor principal */
+    margin: var(--spacing-unit) auto; /* Centra y añade margen exterior */
+    width: calc(100% - var(--spacing-unit) * 2); /* Ajusta ancho con margen */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 3); /* Más espacio debajo del header */
+    padding-bottom: var(--spacing-unit);
+    border-bottom: 1px solid var(--divider-color); /* Separador visual */
+}
+
+.header h3 {
+    margin: 0 0 var(--spacing-unit) 0;
+    color: var(--primary-color);
+    font-size: 1.4em; /* Título ligeramente más grande */
+    font-weight: 600; /* Semi-negrita */
+}
+
+.header p {
+    margin: 0;
+    font-size: 0.95em;
+    color: var(--text-color-secondary);
+}
+
+/* Toggle Switch */
+.toggle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: calc(var(--spacing-unit) * 3); /* Más espacio debajo */
+    padding: var(--spacing-unit); /* Padding alrededor */
+    background-color: var(--background-color); /* Fondo para esta sección */
+    border-radius: var(--border-radius);
+}
+
+.toggle-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    user-select: none;
+    font-size: 1em;
+}
+
+.toggle-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px; /* Ancho ligeramente mayor */
+    height: 26px; /* Alto ligeramente mayor */
+    background-color: var(--toggle-bg-off);
+    border-radius: 13px; /* La mitad del alto */
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-left: var(--spacing-unit);
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+.toggle-switch::before {
+    content: "";
+    position: absolute;
+    width: 22px; /* Tamaño del knob */
+    height: 22px;
+    border-radius: 50%;
+    background-color: var(--toggle-knob);
+    top: 2px;
+    left: 2px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: var(--shadow-light); /* Sombra en el knob */
+}
+
+.toggle-checkbox:checked + .toggle-switch {
+    background-color: var(--toggle-bg-on);
+}
+
+.toggle-checkbox:checked + .toggle-switch::before {
+    transform: translateX(18px); /* Mueve el knob */
+}
+
+.toggle-checkbox:focus + .toggle-switch {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); /* Sombra al enfocar el toggle */
+    outline: none;
+}
+
+
+/* Divider */
+.divider {
+    border: none;
+    height: 1px;
+    background-color: var(--divider-color);
+    margin: calc(var(--spacing-unit) * 3) 0; /* Más margen en el divisor */
+}
+
+/* Settings Groups */
+.settings-group {
+    margin-bottom: calc(var(--spacing-unit) * 3); /* Más espacio entre grupos */
+    padding: var(--spacing-unit) 0; /* Padding interno top/bottom */
+}
+
+.settings-group h4 {
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 1.5); /* Más espacio debajo del título del grupo */
+    font-size: 1.1em; /* Título del grupo ligeramente más grande */
+    color: var(--text-color);
+    border-bottom: 1px dashed var(--divider-color); /* Borde punteado como separador */
+    padding-bottom: var(--spacing-unit);
+    font-weight: 600;
+}
+
+/* Input Rows */
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Eliminamos margin-bottom y usamos padding+border en su lugar para la separación */
+    padding: var(--spacing-unit) 0;
+    border-bottom: 1px solid var(--border-color); /* Separador entre filas */
+    transition: background-color 0.2s ease-in-out; /* Transición al pasar el ratón */
+}
+
+.input-row:last-child {
+    border-bottom: none; /* No borde en la última fila del grupo */
+}
+
+.input-row:hover {
+    background-color: var(--background-color); /* Fondo sutil al pasar el ratón */
+}
+
+
+.input-row label {
+    margin-right: var(--spacing-unit);
+    font-size: 1em; /* Tamaño de fuente estándar */
+    white-space: nowrap;
+    color: var(--text-color-secondary); /* Color secundario para las etiquetas */
+    flex-grow: 1; /* Permite que la etiqueta crezca y empuje el input */
+    min-width: 80px; /* Mínimo ancho para evitar colapsos */
+}
+
+input[type="number"] {
+    width: 90px; /* Ancho un poco mayor */
+    padding: var(--spacing-unit); /* Más padding */
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--input-bg-color);
+    font-size: 1em;
+    color: var(--text-color);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    text-align: center; /* Centra el texto en el input */
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 0.2rem var(--input-focus-shadow);
+}
+
+/* Footer */
+.footer {
+    margin-top: calc(var(--spacing-unit) * 3);
+    text-align: center;
+    padding-top: var(--spacing-unit) ;
+    border-top: 1px solid var(--divider-color); /* Separador en el footer */
+}
+
+.button-save {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 3); /* Más padding en el botón */
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out; /* Más transiciones */
+    box-shadow: var(--shadow-light); /* Sombra suave */
+}
+
+.button-save:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: var(--shadow-medium); /* Sombra más pronunciada al pasar el ratón */
+}
+
+.button-save:active {
+    background-color: var(--primary-active-color);
+    box-shadow: var(--shadow-light) inset; /* Sombra interior al hacer clic */
+    transform: translateY(1px); /* Efecto de "presionar" */
+}
+
+.status-message {
+    margin-top: var(--spacing-unit);
+    font-size: 0.9em;
+    color: var(--accent-color); /* Color de éxito/estado */
+    height: 1.2em; /* Reservar espacio */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    min-height: 1.2em; /* Asegura que siempre ocupe espacio */
+}
+
+.status-message.show {
+    opacity: 1;
+}
+
+/* Exceptions Textarea */
+textarea {
+    width: 100%;
+    padding: var(--spacing-unit);
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 0.9em;
+    resize: vertical;
+    min-height: 80px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 0.2rem var(--input-focus-shadow);
+}
+
+.hint {
+    font-size: 0.8em;
+    color: var(--text-color-secondary);
+    margin-top: calc(var(--spacing-unit) * -1);
+    margin-bottom: 0;
+}

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Fake Pixels",
+  "version": "2.3",
+  "description": "Falsifica resolución de pantalla y navegador con control manual (versión mejorada).",
+  "permissions": [
+    "storage",
+    "<all_urls>"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Fake Pixels"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

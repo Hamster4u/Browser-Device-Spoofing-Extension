@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Pixels Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h3>Fake Pixels</h3>
+            <p>Override screen & mouse properties</p>
+        </header>
+
+        <!-- Toggle principal para habilitar la extensión -->
+        <div class="toggle-section">
+            <label for="mainToggle" class="toggle-label">
+                Enable Extension
+                <input type="checkbox" id="mainToggle" class="toggle-checkbox">
+                <span class="toggle-switch"></span>
+            </label>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Configuración para Size Spoofing -->
+        <div class="settings-group">
+            <h4>Size Spoofing</h4>
+            <div class="input-row">
+                <label for="sizeSpoofing" class="toggle-label">
+                    Enable Size Spoofing
+                    <input type="checkbox" id="sizeSpoofing" class="toggle-checkbox">
+                    <span class="toggle-switch"></span>
+                </label>
+            </div>
+            
+            <!-- Inputs de tamaño -->
+            <div class="input-row">
+                <label for="width">Screen Width:</label>
+                <input type="number" id="width" value="1440" min="0" disabled>
+            </div>
+            <div class="input-row">
+                <label for="height">Screen Height:</label>
+                <input type="number" id="height" value="900" min="0" disabled>
+            </div>
+            <div class="input-row">
+                <label for="innerWidth">Window Width:</label>
+                <input type="number" id="innerWidth" value="1024" min="0" disabled>
+            </div>
+            <div class="input-row">
+                <label for="innerHeight">Window Height:</label>
+                <input type="number" id="innerHeight" value="768" min="0" disabled>
+            </div>
+            <div class="input-row">
+                <label for="dpr">Device Pixel Ratio:</label>
+                <input type="number" id="dpr" value="1" step="0.1" min="0.1" disabled>
+            </div>
+            <div class="input-row">
+                <label for="colorDepth">Color Depth (bits):</label>
+                <input type="number" id="colorDepth" value="24" min="1" step="1" disabled>
+            </div>
+        </div>
+
+        <!-- Configuración para Mouse Spoofing -->
+        <div class="settings-group">
+            <h4>Mouse Spoofing</h4>
+            <div class="input-row">
+                <label for="mouseSpoofing" class="toggle-label">
+                    Enable Mouse Spoofing
+                    <input type="checkbox" id="mouseSpoofing" class="toggle-checkbox">
+                    <span class="toggle-switch"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Configuración para Excepciones -->
+        <div class="settings-group">
+            <h4>Exceptions</h4>
+            <div class="input-row">
+                <label for="exceptions">Websites (one per line):</label>
+                <textarea id="exceptions" rows="4" placeholder="example.com&#10;*.example.org"></textarea>
+            </div>
+            <p class="hint">Use * for wildcards. These sites won't be spoofed.</p>
+        </div>
+
+        <!-- Botón para guardar y feedback al usuario -->
+        <div class="footer">
+            <button id="save" class="button-save">Save Settings</button>
+            <p id="status" class="status-message"></p>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
