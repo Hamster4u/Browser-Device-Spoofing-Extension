@@ -9,6 +9,6 @@
 - Store settings locally and easily toggle spoofing preferences 💾.
 - Simple user interface with clear status messages for successful or failed operations ✅❌.
 - Ideal for web developers 🖥️, privacy-conscious users 🔒, or anyone needing to simulate different devices or screen resolutions 📱💻.
-- 
+
 ⚠️ **[Beta]** This extension is currently in development and may be unstable. Use at your own risk as some features might not work as expected. 🛠️
 This extension aims to provide a straightforward and efficient way to manipulate device properties directly from your browser 🌐, offering an enhanced and customizable browsing experience.
